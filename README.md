@@ -20,7 +20,7 @@ ESP failures cause costly unplanned shutdowns in oil wells. Reactive maintenance
 2. **Downsampling** — multiple intra-day sensor readings averaged to one row per well per day.
 3. **Feature engineering** — outlier clipping at the 1st–99th percentile per well, median imputation, and engineered ratio features (BOPD/FREQ×60, BFPD/FREQ×60, PRESS_INT/PRESS_DESC).
 4. **Label engineering** — a 7-day pre-failure window flagged as "failure approaching," rolled up into a 30-day lookahead target.
-5. **Modeling** — Random Forest (100 trees, depth tuned via k-fold cross-validation, class_weight="balanced"), with SMOTE oversampling applied to the training set only to address class imbalance (test set left untouched, no data leakage).
+5. **Modeling** — Random Forest (100 trees, depth tuned via k-fold cross-validation, `class_weight="balanced"`), with SMOTE oversampling applied to the training set only to address class imbalance (test set left untouched, no data leakage).
 6. **Deployment output** — a 30-day cumulative failure probability per well, rolled into a 5-day alert window and mapped to CRITICAL / HIGH / MEDIUM / LOW risk tiers.
 
 ## Results
@@ -38,9 +38,8 @@ The model correctly caught 91% of real failures with only 78 false alarms out of
 
 - `Data_Analytics_Project_ESP.ipynb` — full data pipeline, feature engineering, model training, and evaluation.
 - `ESP_Failure_Prediction_Presentation.pptx` — final project presentation and results summary.
-- `Project_Proposal.docx` — original project proposal and methodology.
 
-Raw high-frequency sensor archives (multiple GB) are not included in this repository; see the SPE E-Challenge dataset and competition materials for source data.
+Raw high-frequency sensor archives (multiple GB) are not included in this repository; see the [SPE Ecuador E-Challenge competition materials](https://www.spe-ecuador.org/e-challenge-machine-learning-version) for source data.
 
 ## Team
 
